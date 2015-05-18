@@ -248,20 +248,22 @@ def askfont(parent):
     
 def main():    
     root = tk.Tk()
+    root.title("FontChooser demo")
 
     # the following 2 lines
     # prevent the text widget from resizing
     # when changing the font
     root.pack_propagate(False)
-    root.geometry("500x400+200+200")
+    root.geometry("500x400+500+200")
     util.make_topmost(root)
+
+    chooser = tk.Button(root, text="Choose the font", command=lambda: text.config(font=askfont(root)))
+    chooser.pack(side="top")
     
     text = tk.Text(root)
     text.focus()
     text.pack(expand=1, fill='both')
 
-    chooser = tk.Button(root, text="Choose font", command=lambda: text.config(font=askfont(root)))
-    chooser.pack(side="bottom")
     
     root.mainloop()
     
