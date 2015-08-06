@@ -82,9 +82,9 @@ def view_file(parent, title, filename, encoding=None, modal=True):
 
 if __name__ == '__main__':
     root = Tk()
-    root.title('TextView test')
+    root.title('TextViewer Test')
     
-    filename = './TextView.py'
+    filename = './TextViewer.py'
 
     with open(filename, 'r') as f:
         text = f.read()
