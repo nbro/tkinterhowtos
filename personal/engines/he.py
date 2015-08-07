@@ -1,16 +1,12 @@
 """
 Author: Nelson Brochado
 Creation: February, 2015
-Last update: 14.02.2015
+Last update: 7.08.2015
 
-Description:
+DESCRIPTION:
 Highlighting Engine to be used with 'Text' widgets or derived classes,
 and to be used with objects of type 'Language' (found in 'lang/language.py')
-HE uses some functions of the SE engine.
-
-PROBLEMS:
-- It colors just after typing a space or a new letter, 
-but ideally it should color the keyword immediately!!!
+HE uses some functions of the SE engine. 
 
 DEPENDENCIES:
 - module "se"
@@ -43,7 +39,10 @@ class HE(object):
                                 font=self.language.normal['font'])
         self.configure_tags()
         self.highlight_all(None)
-        self.text_widget.bind('<Key>', lambda e: self.highlight_current_line(e))
+        # binding on KeyRelease avoids the problem of coloring
+        # only after we type another character after the word/expression
+        # that should already be colored.
+        self.text_widget.bind('<KeyRelease>', lambda e: self.highlight_current_line(e))
 
     def remove_tags(self, start='1.0', end='end-1c'):
         """
