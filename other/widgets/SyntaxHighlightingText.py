@@ -16,7 +16,7 @@ class SyntaxHighlightingText(Text):
         Text.__init__(self, root)
         self.config_tags()
         self.characters = ascii_letters + digits + punctuation
-        self.bind('<Key>', self.key_press)
+        self.bind('<KeyRelease>', self.key_press)
 
     def config_tags(self):
         for tag, val in self.tags.items():

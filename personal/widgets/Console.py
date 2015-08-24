@@ -1,5 +1,5 @@
 """
-Simple console that executes bash commands
+Simple console that executes child programs in a new processes.
 
 Author: Nelson Brochado
 Version: 0.0.1
@@ -19,9 +19,7 @@ class Console(tk.Frame):
     def __init__(self, master, *args, **kwargs):
         tk.Frame.__init__(self, master, *args, **kwargs)
 
-        self.text_options = {"state": "disabled",
-                             "bg": "black",
-                             "fg": "#08c614",
+        self.text_options = {"bg": "black", "fg": "#08c614",
                              "insertbackground": "#08c614",
                              "selectbackground": "#f01c1c"}
         
@@ -29,7 +27,10 @@ class Console(tk.Frame):
 
         # It seems not to work when Text is disabled...
         # self.text.bind("<<Modified>>", lambda: self.text.frame.see(tk.END))
-
+        self.text.insert("end", "Welcome to this simple console where you can execute a program in a new process:\n"
+                        "You can for example use the command 'open' to open another program, etc.\n"
+                         "Start typing in the entry box below whenever you want...\n\n")
+        self.text.config(state="disabled")       
         self.text.pack(expand=True, fill="both")
 
         # bash command, for example 'ping localhost' or 'pwd'
