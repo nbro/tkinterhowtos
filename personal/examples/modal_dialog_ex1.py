@@ -37,10 +37,10 @@ class ModalDialog(tk.Toplevel):
         self.close_button = tk.Button(self.bottom, text="Close", command=self.destroy)
         self.close_button.pack(side="right")
 
-        # make window modal
-        self.transient(root)
-        self.grab_set()
-        self.wait_window(self)
+        # Makes the window modal
+        self.transient(root)  # http://effbot.org/tkinterbook/wm.htm#Tkinter.Wm.transient-method
+        self.grab_set()  # http://effbot.org/tkinterbook/tkinter-dialog-windows.htm
+        self.wait_window(self)  # http://effbot.org/tkinterbook/widget.htm#Tkinter.Widget.wait_window-method
 
     def _ok(self):
         print("Ok")
