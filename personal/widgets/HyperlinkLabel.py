@@ -1,6 +1,5 @@
 """
 Author: Nelson Brochado
-Based on some post on Stack Overflow (I guess)
 """
 
 import tkinter as tk

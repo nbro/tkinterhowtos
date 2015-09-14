@@ -20,8 +20,7 @@ class TextViewer(Toplevel):
         """
         Toplevel.__init__(self, parent)
         self.configure(borderwidth=5)
-        self.geometry("=%dx%d+%d+%d" % (625, 500, parent.winfo_rootx() + 10,
-                                        parent.winfo_rooty() + 10))
+        self.geometry("=%dx%d+%d+%d" % (625, 500, parent.winfo_rootx() + 10, parent.winfo_rooty() + 10))
         # elguavas - config placeholders til config stuff completed
         self.bg = '#ffffff'
         self.fg = '#000000'
@@ -45,12 +44,9 @@ class TextViewer(Toplevel):
     def create_widgets(self):
         frameText = Frame(self, relief=SUNKEN, height=700)
         frameButtons = Frame(self)
-        self.buttonOk = Button(frameButtons, text='Close',
-                               command=self.Ok, takefocus=FALSE)
-        self.scrollbarView = Scrollbar(frameText, orient=VERTICAL,
-                                       takefocus=FALSE, highlightthickness=0)
-        self.textView = Text(frameText, wrap=WORD, highlightthickness=0,
-                             fg=self.fg, bg=self.bg)
+        self.buttonOk = Button(frameButtons, text='Close', command=self.Ok, takefocus=FALSE)
+        self.scrollbarView = Scrollbar(frameText, orient=VERTICAL, takefocus=FALSE, highlightthickness=0)
+        self.textView = Text(frameText, wrap=WORD, highlightthickness=0, fg=self.fg, bg=self.bg)
         self.scrollbarView.config(command=self.textView.yview)
         self.textView.config(yscrollcommand=self.scrollbarView.set)
         self.buttonOk.pack()
@@ -83,8 +79,9 @@ def view_file(parent, title, filename, encoding=None, modal=True):
 if __name__ == '__main__':
     root = Tk()
     root.title('TextViewer Test')
-    
-    filename = './TextViewer.py'
+
+    import sys
+    filename = sys.argv[0]
 
     with open(filename, 'r') as f:
         text = f.read()
