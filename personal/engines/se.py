@@ -3,7 +3,6 @@ Author: Nelson Brochado
 Creation: 6.02.2015
 Last update: 12.02.2015
 
-Description:
 This module contains a class SE, which represents a Search Engine.
 All methods in SE are static, and therefore can be accessed through the following syntax:
                             SE.method(args)
@@ -24,7 +23,7 @@ Note that these functions consider "you?" different from "you"!
 
 More generic powerful functions are found at the end. Rawer simple functions are found at the beginning.
 
-TODO AND PROBLEMS:
+TODO:
  - performance of the algorithms has not been optimized...
  - I might not need both the functions that starts from a certain index
  and the function that simply returns everything.

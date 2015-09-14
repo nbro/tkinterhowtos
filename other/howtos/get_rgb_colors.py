@@ -1,4 +1,9 @@
+"""
+Obtain available colors on Linux and Mac OS X systems.
+"""
+
 import sys, os
+
 
 rgb_path = ["/usr/share/X11/rgb.txt",     # linux
             "/usr/X11/share/X11/rgb.txt", # OS X

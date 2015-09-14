@@ -28,9 +28,7 @@ class Electrons:
 
         # Add background bitmap
         if bitmap:
-            self.bitmap = c.create_bitmap(width / 2, height / 2,
-                                          bitmap=bitmap,
-                                          foreground='blue')
+            self.bitmap = c.create_bitmap(width / 2, height / 2, bitmap=bitmap, fg='blue')
 
         self.pieces = []
         x1, y1, x2, y2 = 10, 70, 14, 74

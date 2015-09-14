@@ -1,21 +1,25 @@
-# Animated Towers of Hanoi using Tk with optional bitmap file in
-# background.
-#
-# Usage: tkhanoi [n [bitmapfile]]
-#
-# n is the number of pieces to animate; default is 4, maximum 15.
-#
-# The bitmap file can be any X11 bitmap file (look in
-# /usr/include/X11/bitmaps for samples); it is displayed as the
-# background of the animation.  Default is no bitmap.
+"""
+Animated Towers of Hanoi using Tk with optional bitmap file in background.
+
+Usage: hanoi [n [bitmapfile]]
+
+n is the number of pieces to animate; default is 4, maximum 15.
+
+The bitmap file can be any X11 bitmap file
+Look in: "/usr/include/X11/bitmaps: for samples.
+
+It is displayed as the background of the animation.
+Default is no bitmap.
+"""
 
 # This uses Steen Lumholt's Tk interface
 from tkinter import *
 
 
-# Basic Towers-of-Hanoi algorithm: move n pieces from a to b, using c
-# as temporary.  For each move, call report()
 def hanoi(n, a, b, c, report):
+    """Basic Towers-of-Hanoi algorithm:
+    move n pieces from a to b, using c as temporary.
+    For each move, call report()"""
     if n <= 0:
         return
     hanoi(n - 1, a, c, b, report)
@@ -36,9 +40,7 @@ class Tkhanoi:
 
         # Add background bitmap
         if bitmap:
-            self.bitmap = c.create_bitmap(width // 2, height // 2,
-                                          bitmap=bitmap,
-                                          foreground='blue')
+            self.bitmap = c.create_bitmap(width // 2, height // 2, bitmap=bitmap, fg='blue')
 
         # Generate pegs
         pegwidth = 10
@@ -66,6 +68,7 @@ class Tkhanoi:
         x1, y1 = (pegdist - maxpiecewidth) // 2, y2 - pieceheight - 2
         x2, y2 = x1 + maxpiecewidth, y1 + pieceheight
         dx = (maxpiecewidth - minpiecewidth) // (2 * max(1, n - 1))
+        
         for i in range(n, 0, -1):
             p = c.create_rectangle(x1, y1, x2, y2, fill='red')
             self.pieces[i] = p

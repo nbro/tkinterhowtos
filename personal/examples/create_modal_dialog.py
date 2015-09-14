@@ -1,18 +1,14 @@
 """
-Example of how to create a modal dialog
+
+Example of how to create a modal dialog.
 
 Based on: http://tkinter.unpythonic.net/wiki/ModalWindow
 
-'transient' is only part of the solution.
-You also want to 'set the grab' on the secondary window,
-and then 'wait' for the secondary window to close.
-So this is the magical sequence to make a window modal in tkinter:
+To create a modal dialog, we need basically three key methods:
 
     1. transient
     2. grab_set
     3. wait_window
-
-Explanation based on the explanation by Eric Brunel.
 """
 
 import tkinter as tk

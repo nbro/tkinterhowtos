@@ -1,31 +1,44 @@
 #!/usr/bin/env python3
 
-# opens a second window
-# by specifying its coordinates
-# with respect to the main window
+"""
+Author: Nelson Brochado
 
-# Author: Nelson Brochado
+How to open a  window by specifying its coordinates with respect to the main window.
+"""
 
 import tkinter as tk
 
 
 def on_click(root, x, y):
-    print("Root's coordinates:", root.winfo_rootx(), root.winfo_rooty())
+    second = tk.Toplevel(root)
     
-    second_window = tk.Toplevel(root)
-
     try:
         x = int(x)
         y = int(y)
-        second_window.geometry('+%d+%d' % (root.winfo_rootx() + x, root.winfo_rooty() + y))
+        second.geometry('200x200+%d+%d' % (root.winfo_rootx() + x, root.winfo_rooty() + y))
     except ValueError:
         pass
     
-    second_window.transient(root)    
-    second_window.update_idletasks()  # coordinates of second window are updated
-    print("Second Window's coordinates:", second_window.winfo_rootx(), second_window.winfo_rooty())
+    second.transient(root)    
+    second.update_idletasks()  #  Updates second's coordinates.
+
+    coords = tk.Label(second, text="Coordinates: x = %s, y = %s" % (second.winfo_rootx(), second.winfo_rooty()))
+    coords.pack(expand=1, fill="both")
+
+    coords = tk.Label(second, text="Root's coordinates: x = %s, y = %s" % (root.winfo_rootx(), root.winfo_rooty()))
+    coords.pack(expand=1, fill="both")
+
+    # Make second modal
+    second.transient(root)
+    second.grab_set()
+    second.wait_window(second)
+
 
 root = tk.Tk()
+
+for i in range(2):
+    root.grid_columnconfigure(i, weight=1)
+    root.grid_rowconfigure(i, weight=1)
 
 label_x = tk.Label(root, text="Enter the difference in X: ")
 label_x.grid(row=0, column=0)

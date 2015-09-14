@@ -1,8 +1,12 @@
 """Sample demo showing widget states and some font styling."""
-import tkinter.ttk
+
+
+from tkinter import ttk
+
 
 states = ['active', 'disabled', 'focus', 'pressed', 'selected',
           'background', 'readonly', 'alternate', 'invalid']
+
 
 for state in states[:]:
     states.append("!" + state)
@@ -13,20 +17,22 @@ def reset_state(widget):
     widget.state(nostate)
 
 
-class App(tkinter.ttk.Frame):
+class App(ttk.Frame):
 
     def __init__(self, title=None):
-        tkinter.ttk.Frame.__init__(self, borderwidth=6)
+        ttk.Frame.__init__(self, borderwidth=6)
         self.master.title(title)
 
-        self.style = tkinter.ttk.Style()
+        self.style = ttk.Style()
 
         # get default font size and family
         btn_font = self.style.lookup("TButton", "font")
         fsize = str(self.tk.eval("font configure %s -size" % btn_font))
         self.font_family = self.tk.eval("font configure %s -family" % btn_font)
+
         if ' ' in self.font_family:
             self.font_family = '{%s}' % self.font_family
+
         self.fsize_prefix = fsize[0] if fsize[0] == '-' else ''
         self.base_fsize = int(fsize[1 if fsize[0] == '-' else 0:])
 
@@ -64,18 +70,24 @@ class App(tkinter.ttk.Frame):
         return 1
 
     def _setup_widgets(self):
-        btn = tkinter.ttk.Button(self, text='Enter states and watch')
+        btn = ttk.Button(self, text='Enter states and watch')
+        btn.pack()
 
-        entry = tkinter.ttk.Entry(self, cursor='xterm', validate="key")
+        entry = ttk.Entry(self, cursor='xterm', validate="key")
         entry['validatecommand'] = (self.register(self._new_state), '%W', '%P')
         entry.focus()
 
         self.update_widgets.append(btn)
-        entry.validate()
 
+        entry.validate()
         entry.pack(fill='x', padx=6)
-        btn.pack(side='left', pady=6, padx=6, anchor='n')
+
+        states_btn = ttk.Button(self, text="Possible States", command=self.open_possible_states)
+        states_btn.pack()
+        
         self.pack(fill='both', expand=1)
+
+        
 
 
 def main():

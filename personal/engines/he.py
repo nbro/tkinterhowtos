@@ -3,19 +3,13 @@ Author: Nelson Brochado
 Creation: February, 2015
 Last update: 7.08.2015
 
-DESCRIPTION:
 Highlighting Engine to be used with 'Text' widgets or derived classes,
 and to be used with objects of type 'Language' (found in 'lang/language.py')
-HE uses some functions of the SE engine. 
-
-DEPENDENCIES:
-- module "se"
-- submule "lang"
+HE uses some functions of the SE engine.
 """
 
 import sys
 from tkinter import Text, Tk
-
 from se import *
 from lang.language import *
 
