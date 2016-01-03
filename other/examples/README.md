@@ -1,0 +1,1 @@
+Most of these examples were created by Guido Van Rossum, but I am not 100% sure since I have found them around.
