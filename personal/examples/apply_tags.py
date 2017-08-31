@@ -14,8 +14,8 @@ The following is an example that uses `tag_configure`, `tag_add` and `tag_remove
 import tkinter as tk
 from tkinter.font import Font
 
-class Pad(tk.Frame):
 
+class Pad(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
 
@@ -42,12 +42,12 @@ class Pad(tk.Frame):
     def make_bold(self):
         # tk.TclError exception is raised if not text is selected
         try:
-            self.text.tag_add("BOLD", "sel.first", "sel.last")        
+            self.text.tag_add("BOLD", "sel.first", "sel.last")
         except tk.TclError:
             pass
 
     def clear(self):
-        self.text.tag_remove("BOLD",  "1.0", 'end')
+        self.text.tag_remove("BOLD", "1.0", 'end')
 
 
 def demo():

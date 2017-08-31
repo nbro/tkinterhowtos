@@ -6,7 +6,6 @@ import tkinter as tk
 
 
 class MyDialog(tk.Toplevel):
-
     def __init__(self, parent, title='My Dialog', **options):
         """parent should be a Toplevel or a Frame widget"""
         tk.Toplevel.__init__(self, parent)

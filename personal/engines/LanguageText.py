@@ -12,12 +12,11 @@ DEPENDENCIES:
 from tkinter import *
 from tkinter.scrolledtext import ScrolledText
 
-from lang.language import *
 from he import HE
+from lang.language import *
 
 
 class LanguageText(ScrolledText):
-
     """Scrolled text widget with a few more features,
     such as language highlighting for certain programming languages"""
 
@@ -46,7 +45,6 @@ class LanguageText(ScrolledText):
 
 
 class Pad(Toplevel):
-    
     """Simple note pad demonstration"""
 
     def __init__(self, master, size=(500, 400), pos=(260, 300)):
@@ -56,7 +54,7 @@ class Pad(Toplevel):
         self.current = Label(self, text='Language: ' + self.text.language.name, relief="groove")
         self.current.pack(side='right')
         self.get_lang_menu()
-    
+
     def set_python_syntax(self):
         self.current.config(text='Language: Python')
         self.text.set_new_language(PythonLanguage())
@@ -72,11 +70,11 @@ class Pad(Toplevel):
         languages.add_command(label='C++', command=self.set_cpp_syntax)
         menubar.add_cascade(label='Languages', menu=languages)
         self.config(menu=menubar)
-        
+
 
 def main():
     import util
-    
+
     master = Tk()
     master.withdraw()
 
@@ -85,7 +83,7 @@ def main():
     pad.focus_force()
 
     master.mainloop()
-    
+
 
 if __name__ == "__main__":
     main()

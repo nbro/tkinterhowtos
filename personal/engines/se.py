@@ -35,7 +35,6 @@ import re
 
 
 class SE(object):
-
     """Search Engine for my Editor,
     but it can also be used for other projects,
     since methods were thought to be as flexible as possible

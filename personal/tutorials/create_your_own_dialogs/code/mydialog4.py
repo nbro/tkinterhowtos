@@ -2,12 +2,12 @@
 # Description: Using the grid layout to create a dialog
 # File: mydialog4.py
 
-import mydialog2 as dialog
 import tkinter as tk
+
+import mydialog2 as dialog
 
 
 class MyDialog(dialog.MyDialog):
-
     def set_body(self, parent):
         self.name_label = tk.Label(parent, text="Name: ")
         self.name_label.grid(row=0, column=0, sticky='w')

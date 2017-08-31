@@ -15,12 +15,11 @@ import tkinter as tk
 
 
 class ModalDialog(tk.Toplevel):
-
     """Simple modal dialog with a button"""
 
     def __init__(self, root, *args, **kwargs):
         tk.Toplevel.__init__(self, root, *args, **kwargs)
-        
+
         self.body = tk.Frame(self, bd=1, relief="groove")
         self.body.pack(expand=True, fill="both", padx=1, pady=1)
 

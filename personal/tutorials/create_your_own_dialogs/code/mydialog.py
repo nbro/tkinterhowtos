@@ -6,7 +6,6 @@ import tkinter as tk
 
 
 class MyDialog(tk.Toplevel):
-
     def __init__(self, parent, message):
         tk.Toplevel.__init__(self, parent)
         self.parent = parent

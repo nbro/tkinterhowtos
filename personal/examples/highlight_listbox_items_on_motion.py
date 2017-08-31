@@ -2,10 +2,9 @@ from tkinter import *
 
 
 class CustomListBox(Listbox):
-
     def __init__(self, master=None, *args, **kwargs):
         Listbox.__init__(self, master, *args, **kwargs)
-        
+
         self.bg = "white"
         self.fg = "black"
         self.h_bg = "#eee8aa"
@@ -14,7 +13,7 @@ class CustomListBox(Listbox):
         self.current = -1  # current highlighted item
 
         self.fill()
-        
+
         self.bind("<Motion>", self.on_motion)
         self.bind("<Leave>", self.on_leave)
 
@@ -34,7 +33,7 @@ class CustomListBox(Listbox):
     def set_highlighted_item(self, index):
         """Set the item at index with the highlighted colors"""
         self.itemconfig(index, {"bg": self.h_bg})
-        self.itemconfig(index, {"fg": self.h_fg})    
+        self.itemconfig(index, {"fg": self.h_fg})
 
     def on_motion(self, event):
         """Calls everytime there's a motion of the mouse"""

@@ -16,15 +16,13 @@ where 'parent' should be a top level window
 """
 
 import tkinter as tk
-from tkinter import ttk
 from tkinter import font
-import sys
+from tkinter import ttk
 
 import util
 
 
 class ScrolledList(tk.Listbox):
-
     """Listbox with a vertical scrollbar
     for the class FontFamilies"""
 
@@ -41,18 +39,16 @@ class ScrolledList(tk.Listbox):
 
     def show_scrollbar(self):
         self.scrollbar.pack(side='right', fill='y')
-        
 
 
 class FontFamilies(tk.Frame):
-
     """represents a frame with a listbox of available fonts"""
 
     def __init__(self, parent, show_example=True, *args, **options):
         """if show_example is set to False,
         then an example of the current selected font is not shown"""
         tk.Frame.__init__(self, parent, *args, **options)
-        
+
         self.title = tk.Label(self, text='Font Families', borderwidth=1, relief='groove', pady=2)
         self.title.pack(fill='x', pady=2)
 
@@ -62,9 +58,9 @@ class FontFamilies(tk.Frame):
         self.current_font = 'Courier New'
         self.set_selected_font(self.current_font)
         self.families.pack(expand=1, fill='both')
-        
+
         self.example = tk.Entry(self, font=(self.selected_item(), 16))
-        self.example.insert(0, 'Hello World')        
+        self.example.insert(0, 'Hello World')
         if show_example:
             self.example.pack(fill='x', side='bottom')
 
@@ -97,7 +93,6 @@ class FontFamilies(tk.Frame):
 
 
 class FontSizes(tk.Frame):
-
     """Frame containing a combobox with available sizes for a font"""
 
     def __init__(self, parent=None, *args, **options):
@@ -114,32 +109,31 @@ class FontSizes(tk.Frame):
 
 
 class FontStyles(tk.Frame):
-
     """Contains check buttons for styling the font"""
 
     def __init__(self, parent=None, **options):
         tk.Frame.__init__(self, parent, **options)
-        
+
         self.title = tk.Label(self, text='Font Styles', borderwidth=1, relief='groove', pady=2)
         self.title.grid(row=0, column=0, sticky='new', pady=2)
-        
+
         self.bold = tk.Checkbutton(self, text='Bold')
         self.bold.grid(row=1, column=0, sticky='w')
-        
+
         self.italic = tk.Checkbutton(self, text='Italic')
         self.italic.grid(row=2, column=0, sticky='w')
-        
+
         self.underline = tk.Checkbutton(self, text='Underline')
         self.underline.grid(row=3, column=0, sticky='w')
-        
+
         self.overstrike = tk.Checkbutton(self, text='Overstrike')
         self.overstrike.grid(row=4, column=0, sticky='w')
-        
+
         # list containing references to the Checkbuttons
         # used for checks
         self.styles = [self.bold, self.italic, self.underline, self.overstrike]
         self.vars = []
-        
+
         self.fill_vars()
         self.set_rows_weight()
         self.set_columns_weight()
@@ -161,7 +155,6 @@ class FontStyles(tk.Frame):
 
 
 class FontBody(tk.Frame):
-
     """Font body of a font chooser object"""
 
     def __init__(self, parent, example=True, *args, **options):
@@ -173,7 +166,7 @@ class FontBody(tk.Frame):
 
         self.styles = FontStyles(self)
         self.styles.pack(expand=1, fill='both', side='top', padx=1, pady=1)
-        
+
         self.sizes = FontSizes(self)
         self.sizes.pack(fill='x', side='bottom', padx=1, pady=1)
 
@@ -188,10 +181,9 @@ class FontBody(tk.Frame):
         f = font.Font(family=self.families.selected_item(), weight=current_weight, slant=current_italic,
                       size=self.sizes.sizes.get(), underline=current_underline, overstrike=current_overstrike)
         return f
-    
+
 
 class FontFooter(tk.Frame):
-
     """Bottom bar for the font chooser"""
 
     def __init__(self, parent, font_body, *args, **options):
@@ -200,7 +192,7 @@ class FontFooter(tk.Frame):
         self.font_body = font_body
         self.ok = tk.Button(self, text='Ok', command=self.ok, font=('Arial', 12, 'bold'))
         self.ok.pack(side='right', padx=5, ipady=3)
-        
+
         self.cancel = tk.Button(self, text='Cancel', command=self.cancel)
         self.cancel.pack(side='right', padx=5)
 
@@ -217,15 +209,14 @@ class FontFooter(tk.Frame):
 
 
 class FontChooser(tk.Toplevel):
-
     """represents a window with a list of fonts to choose"""
 
     def __init__(self, parent, *args, **options):
         tk.Toplevel.__init__(self, parent, *args, **options)
         self.title("Font Chooser")
-        
+
         self.font = None  # will hold the font
-        
+
         self.body = FontBody(self)
         self.body.pack(expand=1, fill='both', side='top', padx=2)
         self.footer = FontFooter(self, self.body, borderwidth=1, relief='groove')
@@ -245,8 +236,8 @@ class FontChooser(tk.Toplevel):
 def askfont(parent):
     return FontChooser(parent).show()
 
-    
-def main():    
+
+def main():
     root = tk.Tk()
     root.title("FontChooser demo")
 
@@ -259,14 +250,13 @@ def main():
 
     chooser = tk.Button(root, text="Choose the font", command=lambda: text.config(font=askfont(root)))
     chooser.pack(side="top")
-    
+
     text = tk.Text(root)
     text.focus()
     text.pack(expand=1, fill='both')
 
-    
     root.mainloop()
-    
+
+
 if __name__ == '__main__':
     main()
-

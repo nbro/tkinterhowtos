@@ -2,12 +2,12 @@
 Author: Nelson Brochado
 """
 
-import tkinter as tk
 import webbrowser
+
+import tkinter as tk
 
 
 class HyperlinkLabel(tk.Label):
-
     """Hyperlink label that accepts a url of a webpage to be open
     when the text of the label is clicked."""
 
@@ -18,9 +18,9 @@ class HyperlinkLabel(tk.Label):
         self.normal_color = "#00aaff"
         self.hover_color = "#00eeff"
         self.visited_color = "#0033ff"
-        
+
         self.config(fg=self.normal_color)
-        
+
         self.href = href
         self.bind("<Button-1>", self.on_click)
         self.bind("<Enter>", self.on_enter)
@@ -36,10 +36,11 @@ class HyperlinkLabel(tk.Label):
             self.config(fg=self.visited_color)
         else:
             self.config(fg=self.normal_color)
-        
+
     def on_click(self, event=None):
         self.clicks += 1
         webbrowser.open_new(self.href)
+
 
 def main():
     root = tk.Tk()
@@ -49,8 +50,9 @@ def main():
 
     closer = tk.Button(root, text="Close", command=root.destroy)
     closer.pack(side="top", fill="x", padx=5, pady=(8, 1))
-        
+
     root.mainloop()
+
 
 if __name__ == "__main__":
     main()

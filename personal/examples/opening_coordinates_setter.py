@@ -11,16 +11,16 @@ import tkinter as tk
 
 def on_click(root, x, y):
     second = tk.Toplevel(root)
-    
+
     try:
         x = int(x)
         y = int(y)
         second.geometry('200x200+%d+%d' % (root.winfo_rootx() + x, root.winfo_rooty() + y))
     except ValueError:
         pass
-    
-    second.transient(root)    
-    second.update_idletasks()  #  Updates second's coordinates.
+
+    second.transient(root)
+    second.update_idletasks()  # Updates second's coordinates.
 
     coords = tk.Label(second, text="Coordinates: x = %s, y = %s" % (second.winfo_rootx(), second.winfo_rooty()))
     coords.pack(expand=1, fill="both")

@@ -13,20 +13,17 @@ See docstrings for more information.
 """
 
 from tkinter import *
-from tkinter.scrolledtext import ScrolledText
-import sys
 
 
 class TextPositionIndicator(Frame):
-
     """This class represents a line and character indicator of a Text widget"""
-    
+
     L = 'Current line: '
     C = 'Current char: '
     LINES = 'Total lines: '
     CHARS = 'Total chars: '
     FONT = ("Calibri", 12)
-    
+
     def __init__(self, parent, *args, **options):
         Frame.__init__(self, parent, *args, **options)
         # will hold reference to either a Text widget
@@ -91,7 +88,6 @@ class TextPositionIndicator(Frame):
 
 
 class IndicatorBottomBar(Frame):
-
     """Bottom bar with a TextPositionIndicator"""
 
     def __init__(self, parent, *args, **options):
@@ -101,15 +97,14 @@ class IndicatorBottomBar(Frame):
 
     def attach(self, text_widget):
         self.indicator.attach(text_widget)
-        
+
 
 class IndicatorText(Frame):
-
     """Text widget with a IndicatorBottomBar"""
-    
+
     def __init__(self, parent, *args, **options):
         Frame.__init__(self, parent, *args, **options)
-        
+
         self.topframe = Frame(self, height=500)
         self.text = Text(self.topframe)
         self.text.focus()
@@ -119,7 +114,7 @@ class IndicatorText(Frame):
         self.bottom.pack(side="bottom", fill="x")
         self.topframe.pack(expand=1, fill="both", side="top")
 
-        
+
 if __name__ == '__main__':
     root = Tk()
     indicator = IndicatorText(root)

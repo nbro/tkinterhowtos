@@ -15,7 +15,6 @@ from tkinter.scrolledtext import ScrolledText
 
 
 class MultipleText(tk.Frame):
-
     """Widget with multiple Text widgets.
     Click tab to change from one Text widget to the other."""
 

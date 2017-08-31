@@ -2,12 +2,12 @@
 # Description: class that derives from MyDialog of mydialog2.py
 # File: mydialog3.py
 
-import mydialog2 as dialog
 import tkinter as tk
+
+import mydialog2 as dialog
 
 
 class MyDialog(dialog.MyDialog):
-
     def set_body(self, parent):
         self.name_label = tk.Label(parent, text="Name: ")
         self.name_label.pack(side='left', fill='both')

@@ -5,15 +5,14 @@ Author: Nelson Brochado
 Version: 0.0.1
 """
 
-
-import tkinter as tk
-from tkinter.scrolledtext import ScrolledText
 import threading
 from subprocess import Popen, PIPE
 
+import tkinter as tk
+from tkinter.scrolledtext import ScrolledText
+
 
 class Console(tk.Frame):
-
     """Simple console that can execute bash commands"""
 
     def __init__(self, master, *args, **kwargs):
@@ -22,21 +21,21 @@ class Console(tk.Frame):
         self.text_options = {"bg": "black", "fg": "#08c614",
                              "insertbackground": "#08c614",
                              "selectbackground": "#f01c1c"}
-        
+
         self.text = ScrolledText(self, **self.text_options)
 
         # It seems not to work when Text is disabled...
         # self.text.bind("<<Modified>>", lambda: self.text.frame.see(tk.END))
         self.text.insert("end", "Welcome to this simple console where you can execute a program in a new process:\n"
-                        "You can for example use the command 'open' to open another program, etc.\n"
-                         "Start typing in the entry box below whenever you want...\n\n")
-        self.text.config(state="disabled")       
+                                "You can for example use the command 'open' to open another program, etc.\n"
+                                "Start typing in the entry box below whenever you want...\n\n")
+        self.text.config(state="disabled")
         self.text.pack(expand=True, fill="both")
 
         # bash command, for example 'ping localhost' or 'pwd'
         # that will be executed when "Execute" is pressed
-        self.command = ""  
-        self.popen = None     # will hold a reference to a Popen object
+        self.command = ""
+        self.popen = None  # will hold a reference to a Popen object
         self.running = False  # True if the process is running
 
         self.bottom = tk.Frame(self)
@@ -68,7 +67,7 @@ class Console(tk.Frame):
     def clear_entry(self):
         """Clears the Entry command widget"""
         self.entry.delete(0, "end")
-        
+
     def clear(self, event=None):
         """Does not stop an eventual running process,
         but just clears the Text and Entry widgets."""
@@ -91,7 +90,7 @@ class Console(tk.Frame):
         threading.Thread(target=self.process).start()
 
     def process(self):
-        """Runs in an infinite loop until self.running is False""" 
+        """Runs in an infinite loop until self.running is False"""
         while self.running:
             self.execute()
 
@@ -101,7 +100,7 @@ class Console(tk.Frame):
             try:
                 self.popen.kill()
             except ProcessLookupError:
-                pass 
+                pass
         self.running = False
 
     def execute(self):
@@ -117,15 +116,15 @@ class Console(tk.Frame):
             while self.popen.poll() is None:
                 for line in lines_iterator:
                     self.show(line.decode("utf-8"))
-            self.show("Process " + self.command  + " terminated.\n\n")
-            
+            self.show("Process " + self.command + " terminated.\n\n")
+
         except FileNotFoundError:
-            self.show("Unknown command: " + self.command + "\n\n")                               
+            self.show("Unknown command: " + self.command + "\n\n")
         except IndexError:
             self.show("No command entered\n\n")
-            
+
         self.stop()
-        
+
 
 if __name__ == "__main__":
     root = tk.Tk()
