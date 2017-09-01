@@ -10,14 +10,15 @@ Author: Nelson Brochado
 Simple example on how to delete a row from a Treeview.
 """
 
-from tkinter import Tk, Button, ttk, Frame
+from tkinter import Tk, Button, Frame
+from tkinter.ttk import Treeview
 
 
 class Example(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent)
 
-        self.tree = ttk.Treeview(self)
+        self.tree = Treeview(self)
 
         self.tree["columns"] = ("item1", "item2")
         self.tree.heading("item1", text="Column 1")
@@ -26,16 +27,12 @@ class Example(Frame):
         self.tree.insert("", 0, text="Item 1", values=("Value 1", "Value 2"))
 
         row2 = self.tree.insert("", 1, "row2", text="Item 2")
-        self.tree.insert(row2, "end", "index1", text="Item 1",
-                         values=("Value 1", "Value 2"))
-        self.tree.insert(row2, "end", "index2", text="Item 2",
-                         values=("Value 1", "Value 2"))
-        self.tree.insert(row2, "end", "index3", text="Item 3",
-                         values=("Value 1", "Value 2"))
+        self.tree.insert(row2, "end", "item1", text="Item 1", values=("3", "7"))
+        self.tree.insert(row2, "end", "item2", text="Item 2", values=("2", "5"))
 
         self.tree.pack(expand=1, fill="both")
 
-        self.delete = Button(self, text="Delete", command=self.on_delete)
+        self.delete = Button(self, text="Delete Row", command=self.on_delete)
         self.delete.pack(side="bottom")
 
     def on_delete(self):
