@@ -31,8 +31,8 @@ from tkinter.font import Font
 
 
 class Example(Frame):
-    def __init__(self, parent, *args, **kwargs):
-        Frame.__init__(self, parent, *args, **kwargs)
+    def __init__(self, parent):
+        Frame.__init__(self, parent)
 
         self.toolbar = Frame(self, bg="#eee")
         self.toolbar.pack(side="top", fill="x")
