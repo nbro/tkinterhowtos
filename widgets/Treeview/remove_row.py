@@ -41,7 +41,7 @@ class Example(Frame):
 
     def on_delete(self):
         try:
-            selected_item = self.tree.selection()[0]  # Get selected item
+            selected_item = self.tree.selection()[0]
             self.tree.delete(selected_item)
         except IndexError:
             pass
