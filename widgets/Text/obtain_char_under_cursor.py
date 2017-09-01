@@ -7,7 +7,7 @@ Author: Nelson Brochado
 
 # Description
 
-Example on how to determine the character under the cursor.
+Example on how to determine the character (in a Text widget) under the cursor.
 
 # References
 

@@ -7,11 +7,14 @@ Author: Nelson Brochado
 
 # Description
 
-Example on how to find the index in a Text widget.
+Example on how to find the index in a Text widget. Indexes are used to point to
+positions within the text handled by the Text widget. Text widget indexes
+correspond to positions between the actual characters.
 
 # References
 
 - https://stackoverflow.com/a/21680207/3924118
+- http://effbot.org/tkinterbook/text.htm
 """
 
 from tkinter import Tk, Frame, Text, Label
