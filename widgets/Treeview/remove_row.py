@@ -8,6 +8,10 @@ Author: Nelson Brochado
 # Description
 
 Simple example on how to delete a row from a Treeview.
+
+# References
+
+- http://infohost.nmt.edu/tcc/help/pubs/tkinter/web/ttk-Treeview.html
 """
 
 from tkinter import Tk, Button, Frame
