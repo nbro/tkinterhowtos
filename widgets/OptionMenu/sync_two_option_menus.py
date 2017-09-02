@@ -34,11 +34,11 @@ class Example(Frame):
         self.var_a.trace('w', self.update_options)
 
         self.option_menu_a = OptionMenu(self, self.var_a, *self.dict.keys())
-        self.option_menu_a.pack()
+        self.option_menu_a.pack(side="top")
         self.option_menu_a["width"] = 10
         self.option_menu_b = OptionMenu(self, self.var_b, '')
         self.option_menu_b["width"] = 10
-        self.option_menu_b.pack()
+        self.option_menu_b.pack(side="top")
 
         self.var_a.set('Asia')
 
@@ -55,5 +55,5 @@ class Example(Frame):
 
 if __name__ == "__main__":
     root = Tk()
-    Example(root).pack()
+    Example(root).pack(expand=True, fill="both")
     root.mainloop()

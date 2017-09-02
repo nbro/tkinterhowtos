@@ -8,7 +8,7 @@ Author: Nelson Brochado
 
 # Description
 
-An example on how to highlight the current line in a Text widget.
+An example on how to highlight the current line in a Text widget while writing.
 
 # References
 
