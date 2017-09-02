@@ -27,3 +27,10 @@ simple words) in a `Text` widget.
 Every file is intended to contain solutions to one single problem. Examples are
 concise. Each module's doc-strings contains a list of the references used while
 implementing the example.
+
+## References
+
+Many solutions to "how to" problems in this repository have been based on
+solutions I found on websites such as Stack Overflow. So, even if I'm the author
+of the concrete implementations in this repository, in many (or most) cases I'm 
+not the originator of the ideas used to implement the solutions.
