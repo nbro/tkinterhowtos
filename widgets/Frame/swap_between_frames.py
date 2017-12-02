@@ -45,6 +45,8 @@ class Example(Frame):
     def create_frames(self, n):
         for i in range(n):
             self.frames[i] = Frame(self, bg=rand_hex_color())
+            # All frames are stacked one over the other, but only one is 
+            # visible, at every time, when tkraise is called on it.
             self.frames[i].grid(row=0, column=0, sticky='nsew')
 
     def fill_frames(self, n):
